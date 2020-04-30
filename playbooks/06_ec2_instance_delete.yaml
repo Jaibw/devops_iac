@@ -15,5 +15,6 @@
       - name: Terminate
         ec2_instance:
           state: absent
+          region: ap-south-1
           filters:
             tag:Name: Web Server
