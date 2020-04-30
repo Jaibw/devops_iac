@@ -2,10 +2,10 @@
 - hosts: all
   tasks:
     - name: creating backup file
-      shell: tar cfz /tmp/html.tar.gz  /var/www/html
+      shell: tar "/tmp/html.$(date '+%F').tar.gz"  /var/www/html
       become: yes
     - name: Specifying a destination path
       fetch:
-        src: /tmp/html.tar.gz
+        src: "/tmp/html.$(date '+%F').tar.gz"
         dest: /home/ubuntu/backup/{{ inventory_hostname }}/
         flat: yes
