@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - name: creating backup file
-      shell: tar /tmp/html.{{ ansible_date_time.date }}.tar.gz  /var/www/html
+      shell: tar cfz /tmp/html.{{ ansible_date_time.date }}.tar.gz  /var/www/html
       become: yes
     - name: Specifying a destination path
       fetch:
