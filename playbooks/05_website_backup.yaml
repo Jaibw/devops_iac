@@ -2,10 +2,10 @@
 - hosts: all
   tasks:
     - name: creating backup file
-      shell: tar cfz /tmp/html.{{ ansible_date_time }}.tar.gz  /var/www/html
+      shell: tar cfz /tmp/html.tar.gz  /var/www/html
       become: yes
     - name: Specifying a destination path
       fetch:
-        src: /tmp/html.{{ ansible_date_time }}.tar.gz
+        src: /tmp/html.tar.gz
         dest: /home/ubuntu/backup/{{ ansible_date_time }}/{{ inventory_hostname }}/
         flat: yes
