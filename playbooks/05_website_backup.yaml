@@ -1,7 +1,11 @@
 ---
 - hosts: all
   tasks:
+    - name: creating backup file
+      shell: tar cfz /tmp/html.{{ ansible_date_time }}.tar.gz  /var/www/html
+      register: files_to_copy
     - name: Specifying a destination path
-      synchronize:  src={{ item }} dest=/home/ubuntu/backup/{{ ansible_date_time }}/{{ inventory_hostname }}/ mode=pull
-        with_items:
-          - "/var/www/html"
+      fetch:
+        src: /tmp/html.{{ ansible_date_time }}.tar.gz
+        dest: /home/ubuntu/backup/{{ ansible_date_time }}/{{ inventory_hostname }}/
+        flat: yes
