@@ -4,7 +4,7 @@
     connection: local
     gather_facts: False
     vars:
-      - website: http://13.233.167.146
+      - website: http://13.233.167.143
     tasks:
       - action: uri url="{{ website }}" return_content=yes
         register: webpage
