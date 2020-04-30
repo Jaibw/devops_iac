@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+    - name: Specifying a destination path
+      fetch:
+        src: /var/www/html
+        dest: /home/ubuntu/backup/{{ ansible_date_time }}/{{ inventory_hostname }}/
+        flat: yes

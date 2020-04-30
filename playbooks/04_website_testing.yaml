@@ -1,0 +1,13 @@
+---
+  - name: Provision an EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    vars:
+      - website: http://13.233.167.146
+    tasks:
+      - action: uri url="{{ website }}" return_content=yes
+        register: webpage
+      - fail:
+          msg: 'service is not happy'
+        when: "'Frozen Yogurt Shop' not in webpage.content"

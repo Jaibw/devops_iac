@@ -1,0 +1,13 @@
+---
+  - name: Terminate EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    tags: provisioning
+
+    tasks:
+      - name: Terminate
+        ec2_instance:
+          state: absent
+          filters:
+            tag:Name: Web Server
