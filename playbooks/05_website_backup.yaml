@@ -3,7 +3,7 @@
   tasks:
     - name: creating backup file
       shell: tar cfz /tmp/html.{{ ansible_date_time }}.tar.gz  /var/www/html
-      register: files_to_copy
+      become: yes
     - name: Specifying a destination path
       fetch:
         src: /tmp/html.{{ ansible_date_time }}.tar.gz
