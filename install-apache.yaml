@@ -1,7 +1,7 @@
 ---
   - name: Install httpd 
     hosts: localhost
-    become: yes
+    become: true
     tasks:
       - name: Package Install 
         yum: 
